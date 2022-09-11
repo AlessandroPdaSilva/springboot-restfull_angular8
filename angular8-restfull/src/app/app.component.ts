@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular8-restfull';
+
+  usuario = {login: '',senha: ''}
+
+  public login(){
+    console.log("Login: "+this.usuario.login+ "\n senha: "+ this.usuario.senha)
+  }
+
+
 }

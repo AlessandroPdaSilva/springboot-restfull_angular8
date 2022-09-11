@@ -11,6 +11,14 @@
       "port": 9287,
       "webRoot": "${workspaceFolder}",
       "url": "http://localhost:4200/#"
+    },
+    {
+      "name": "Launch Chrome localhost",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9229,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://localhost:4200/"
     }
   ]
 }

@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(private loginService: LoginServiceService){}
 
-  public login(){
+  public logar(){
 
     this.loginService.fazerLogin(this.usuario);
   }

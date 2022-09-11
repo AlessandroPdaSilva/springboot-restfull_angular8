@@ -27,7 +27,7 @@ export class LoginServiceService {
 
     }, error => {
 
-      alert("Erro ao enviar login")
+      alert("Acesso negado")
     })
 
 

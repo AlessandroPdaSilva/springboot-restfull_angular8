@@ -1,24 +1,5 @@
 
+
 <!-- VIEW -->
-<form id="formlogin">
+<router-outlet></router-outlet>
 
-  <div class="form-group">
-    <label for="login">Login</label>
-    <input [(ngModel)] = "usuario.login" name="login" #login="ngModel" required type="email" class="form-control" id="login" aria-describedby="emailHelp" placeholder="" >
-  </div>
-
-    <div *ngIf="login.invalid" class="alert alert-danger" role="alert">
-      informe o login
-    </div>
-
-  <div class="form-group">
-    <label for="senha">Senha</label>
-    <input [(ngModel)] = "usuario.senha" name="senha" #senha="ngModel" required type="password" class="form-control" id="senha" placeholder="">
-  </div>
-
-    <div *ngIf="senha.invalid" class="alert alert-danger" role="alert">
-      informe a senha
-    </div>
- 
-  <button [disabled]="login.invalid || senha.invalid" (click)="logar()"  type="submit" class="btn btn-primary">Enviar</button>
-</form>

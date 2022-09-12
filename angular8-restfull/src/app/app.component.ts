@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoginServiceService } from './service/login-service.service';
 
 
 @Component({
@@ -8,18 +7,7 @@ import { LoginServiceService } from './service/login-service.service';
   styleUrls: ['./app.component.css']
 })
 
-// CONTROLER
 export class AppComponent {
   title = 'angular8-restfull';
-
-  usuario = {login: '',senha: ''}
-
-  constructor(private loginService: LoginServiceService){}
-
-  public logar(){
-
-    this.loginService.fazerLogin(this.usuario);
-  }
-
 
 }

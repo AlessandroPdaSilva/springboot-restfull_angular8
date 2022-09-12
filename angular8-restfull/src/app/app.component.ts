@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,7 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'angular8-restfull';
+
+  constructor(private router: Router){}
+
+  ngOnInit(): void {
+
+    if(localStorage.getItem('token') == null){
+      this.router.navigate(['login']);
+    }
+
+  }
+
+  public logout(){
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
+
+  
 
 }

@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';// Rotas do angular
 import {ModuleWithProviders} from '@angular/compiler/src/core';// Rotas do angular
 import { LoginComponent } from './login/login.component';
+import { HttpInterceptorModule } from './service/header-interceptor.service';
 
 
 // Rotas URLs
@@ -31,7 +32,8 @@ export const routes : ModuleWithProviders = RouterModule.forRoot(appRouters);
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    routes
+    routes,
+    HttpInterceptorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

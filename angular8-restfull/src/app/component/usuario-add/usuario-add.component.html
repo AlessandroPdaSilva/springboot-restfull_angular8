@@ -7,17 +7,17 @@
 
   <div class="form-group">
     <label for="id">ID</label>
-    <input type="text" class="form-control" id="id" readonly >
+    <input [(ngModel)]="usuario.id" type="text" class="form-control" id="id" readonly >
   </div>
 
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input id="nome" name="nome" type="text" class="form-control" >
+    <input [(ngModel)]="usuario.nome" id="nome" name="nome" type="text" class="form-control" >
   </div>
 
   <div class="form-group">
     <label for="login">Login</label>
-    <input id="login" name="login" type="text" class="form-control" >
+    <input [(ngModel)]="usuario.login" id="login" name="login" type="text" class="form-control" >
   </div>
 
   <div class="form-group">
@@ -25,7 +25,7 @@
     <input id="senha" name="senha" type="password" class="form-control" >
   </div>
   
-  <button type="submit" class="btn btn-primary">Salvar</button>
+  <button (click)='salvarUsuario()' type="submit" class="btn btn-primary">Salvar</button>
   <button type="button" class="btn btn-primary" style="margin-left: 5px;">Novo</button>
   <button [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" type="button" class="btn btn-primary" style="margin-left: 5px;">Voltar para usuarios</button>
 

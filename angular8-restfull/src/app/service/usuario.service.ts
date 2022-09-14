@@ -26,4 +26,9 @@ export class UsuarioService {
     return this.http.get<any>(AppConstants.urlUsuario+'/consultaByNome/'+nome)
   }
 
+  // CONSULTA USUARIO POR ID
+  consultaUsuarioById(id: Number): Observable<any> {
+    return this.http.get<any>(AppConstants.urlUsuario+ '/'+id)
+  }
+
 }

@@ -15,4 +15,15 @@ export class UsuarioService {
     return this.http.get<any>(AppConstants.urlUsuario)
   }
 
+  // DELETAR USUARIO
+  deletarUsuario(id: Number): Observable<any> {
+    return this.http.delete(AppConstants.urlUsuario +'/'+ id, {responseType: 'text'})
+
+  }
+
+  // CONSULTA USUARIO POR NOME
+  consultaUsuarioByNome(nome: String): Observable<any> {
+    return this.http.get<any>(AppConstants.urlUsuario+'/consultaByNome/'+nome)
+  }
+
 }

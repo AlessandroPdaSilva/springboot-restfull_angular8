@@ -16,23 +16,25 @@ export class LoginServiceService {
   // Fazer login
   fazerLogin(usuario){
 
-    return this.http.post(AppConstants.urlLogin, JSON.stringify(usuario))
-    .subscribe( data => {
-     
-        // token
-        var token = JSON.parse(JSON.stringify(data)).Authorization.split(' ')[1];
-        localStorage.setItem("token", token);
+      localStorage.clear();
 
-        console.info( localStorage.getItem("token") );
+      return this.http.post(AppConstants.urlLogin, JSON.stringify(usuario))
+      .subscribe( data => {
+      
+          // token
+          var token = JSON.parse(JSON.stringify(data)).Authorization.split(' ')[1];
+          localStorage.setItem("token", token);
 
-        // redireciona para home
-        this.router.navigate(['home'])
-        
+          console.info( localStorage.getItem("token") );
 
-    }, error => {// Erro
+          // redireciona para home
+          this.router.navigate(['home'])
+          
 
-      alert("Acesso negado")
-    })
+      }, error => {// Erro
+
+        alert("Acesso negado")
+      })
 
 
   }

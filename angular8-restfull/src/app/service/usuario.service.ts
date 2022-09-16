@@ -42,4 +42,13 @@ export class UsuarioService {
     return this.http.put<any>(AppConstants.urlUsuario,usuario)
   }
 
+  // USUARIO AUTENTICADO
+  usuarioAutenticado(){
+    if(localStorage.getItem('token')!= null){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }

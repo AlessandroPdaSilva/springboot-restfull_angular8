@@ -28,13 +28,35 @@ export class UsuarioAddComponent implements OnInit {
       })
       
       console.log(id)
+    }else{
+      this.novoUsuario()
     }
 
   }
 
   // SALVAR USUARIO
-    salvarUsuario(){
-      console.info(this.usuario)
+  salvarUsuario(){
+
+    if(this.usuario.id == null){// salvar
+
+      this.usuarioService.salvarUsuario(this.usuario).subscribe(data=>{
+        this.novoUsuario()
+        console.info('Salvo com sucesso: '+data)
+      })
+    }else{// editar
+      this.usuarioService.editarUsuario(this.usuario).subscribe(data=>{
+        this.novoUsuario()
+        console.info('Editado com sucesso: '+data)
+      })
     }
+
+
+
+  }
+
+  // NOVO USUARIO
+  novoUsuario(){
+    this.usuario = new Usuario();
+  }
 
 }

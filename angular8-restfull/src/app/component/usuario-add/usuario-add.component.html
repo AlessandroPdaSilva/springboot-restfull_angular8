@@ -1,32 +1,34 @@
 
 
-<form style="padding: 3%;">
+<form style="padding: 3%;" #formValidate="ngForm" >
 
   <h2>Tela de Usuario</h2>
   <br>
 
   <div class="form-group">
     <label for="id">ID</label>
-    <input [(ngModel)]="usuario.id" type="text" class="form-control" id="id" readonly >
+    <input [(ngModel)]="usuario.id" id="id" name="id" type="text" class="form-control" readonly >
   </div>
 
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input [(ngModel)]="usuario.nome" id="nome" name="nome" type="text" class="form-control" >
+    <span style="color:red; font-size: 23px;" *ngIf="nomeValidate.invalid"> * </span>
+    <input [(ngModel)]="usuario.nome" id="nome" name="nome" #nomeValidate="ngModel" type="text" required="true" class="form-control" >
   </div>
 
   <div class="form-group">
     <label for="login">Login</label>
-    <input [(ngModel)]="usuario.login" id="login" name="login" type="text" class="form-control" >
+    <span style="color:red; font-size: 23px;" *ngIf="loginValidate.invalid"> * </span>
+    <input [(ngModel)]="usuario.login" id="login" name="login" #loginValidate="ngModel" type="text" required="true" class="form-control" >
   </div>
 
   <div class="form-group">
     <label for="senha">Senha</label>
-    <input id="senha" name="senha" type="password" class="form-control" >
+    <input [(ngModel)]="usuario.senha" id="senha" name="senha" type="password" class="form-control" >
   </div>
   
-  <button (click)='salvarUsuario()' type="submit" class="btn btn-primary">Salvar</button>
-  <button type="button" class="btn btn-primary" style="margin-left: 5px;">Novo</button>
+  <button (click)='salvarUsuario()' [disabled]="formValidate.invalid" type="submit" class="btn btn-primary">Salvar</button>
+  <button (click)='novoUsuario()' type="button" class="btn btn-primary" style="margin-left: 5px;">Novo</button>
   <button [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" type="button" class="btn btn-primary" style="margin-left: 5px;">Voltar para usuarios</button>
 
 </form>

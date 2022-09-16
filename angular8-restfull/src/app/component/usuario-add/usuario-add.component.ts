@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Usuario } from 'src/app/model/usuario';
+import { Telefone } from 'src/app/model/telefone';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { Usuario } from 'src/app/model/usuario';
 export class UsuarioAddComponent implements OnInit {
 
   usuario: Usuario;
+  telefone = new Telefone();
 
   constructor(private routeActive: ActivatedRoute, private usuarioService: UsuarioService) { }
 
@@ -57,6 +59,19 @@ export class UsuarioAddComponent implements OnInit {
   // NOVO USUARIO
   novoUsuario(){
     this.usuario = new Usuario();
+    this.telefone = new Telefone();
+  }
+
+
+  // ADD TELEFONE
+  addTelefone(){
+    if (this.usuario.listaTelefone === undefined) {
+      this.usuario.listaTelefone = new Array<Telefone>();
+    }
+
+    this.usuario.listaTelefone.push(this.telefone);
+    this.telefone = new Telefone();
+
   }
 
 }

@@ -26,7 +26,33 @@
     <label for="senha">Senha</label>
     <input [(ngModel)]="usuario.senha" id="senha" name="senha" type="password" class="form-control" >
   </div>
+   
+
+  <div class="form-inline">
+    
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="numero">Telefone</label>
+      <input type="text" [(ngModel)]="telefone.numero" id="numero" name="numero"  class="form-control" >
+    </div>
+
+    <button (click)="addTelefone()" type="button" class="btn btn-primary mb-2">adicionar</button>
+
+  </div>
+
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let fone of usuario.listaTelefone; let i = index">
+         <td>{{fone.id}}</td>
+         <td>{{fone.numero}}</td>
+         <td><button class="btn btn-danger" >Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
   
+
+
   <button (click)='salvarUsuario()' [disabled]="formValidate.invalid" type="submit" class="btn btn-primary">Salvar</button>
   <button (click)='novoUsuario()' type="button" class="btn btn-primary" style="margin-left: 5px;">Novo</button>
   <button [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" type="button" class="btn btn-primary" style="margin-left: 5px;">Voltar para usuarios</button>

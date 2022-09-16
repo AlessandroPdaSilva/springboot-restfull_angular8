@@ -1,7 +1,9 @@
 import { Injectable, NgModule } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ngModuleJitUrl } from '@angular/compiler';
+import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,10 @@ export class HeaderInterceptorService implements HttpInterceptor{
 
   constructor() { }
 
+  // INTERCEPTOR
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
+    // Sempre envia Token
     if(localStorage.getItem('token') != null){
 
       const token = 'Bearer '+ localStorage.getItem('token');
@@ -22,19 +26,44 @@ export class HeaderInterceptorService implements HttpInterceptor{
         headers: req.headers.set('Authorization',token)
       })
 
-      // Retorna para cabeçalho
-      return next.handle(tokenVar);
+      return next.handle(tokenVar).pipe(tap( 
+
+        (event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse && (event.status === 200 || event.status === 201)) {
+            console.info('Sucesso na operação');
+          }
+        }
+
+      ),catchError(this.processaError));// Retorna para cabeçalho
 
     }else{
-
-      // Retorna para cabeçalho
-      return next.handle(req);
-
+      return next.handle(req).pipe(catchError(this.processaError));// Retorna para cabeçalho
     }
     
   }
+
+
   
+  // PROCESSA ERRO
+  processaError(error: HttpErrorResponse) {
+    let errorMessage = 'Erro desconhecido';
+
+    if (error.error instanceof ErrorEvent) {
+      console.error(error.error);
+      errorMessage = 'Error: ' + error.error.error;
+    } else {
+      errorMessage = 'Código: ' + error.error.code + '\nMensagem: ' + error.error.error;
+    }
+
+    alert(errorMessage)
+    return throwError(errorMessage);
+  }
+
+
+
 }
+
+
 
 @NgModule({
   providers: [{

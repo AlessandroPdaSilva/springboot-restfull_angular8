@@ -74,4 +74,24 @@ export class UsuarioAddComponent implements OnInit {
 
   }
 
+
+  // DELETAR TELEFONE
+  deletarTelefone(idTelefone, i){
+
+    if (idTelefone == null) {
+      this.usuario.listaTelefone.splice(i, 1);
+      return;
+    }
+
+
+    if (idTelefone !== null && confirm("Tem certeza que deseja remover?")) {
+
+        this.usuarioService.deletarTelefone(idTelefone).subscribe(data=>{
+          this.usuario.listaTelefone.splice(i, 1);
+        })
+
+    }    
+    
+  }
+
 }

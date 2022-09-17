@@ -51,4 +51,9 @@ export class UsuarioService {
     }
   }
 
+  // DELETAR TELEFONE
+  deletarTelefone(id): Observable<any> {
+    return this.http.delete(AppConstants.urlUsuario + "telefone/" + id, {responseType: 'text'});
+  }
+
 }

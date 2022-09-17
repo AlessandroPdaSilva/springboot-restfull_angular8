@@ -44,7 +44,7 @@
       <tr *ngFor="let fone of usuario.listaTelefone; let i = index">
          <td>{{fone.id}}</td>
          <td>{{fone.numero}}</td>
-         <td><button class="btn btn-danger" >Delete</button></td>
+         <td><button (click)="deletarTelefone(fone.id, i)" class="btn btn-danger" >Delete</button></td>
       </tr>
     </tbody>
   </table>

@@ -33,13 +33,18 @@ export class UsuarioComponent implements OnInit {
 
   // DELETAR USUARIO
   deletarUsuario(id: Number){
-    this.usuarioService.deletarUsuario(id).subscribe(data =>{
-      
-      console.log(data)
 
-      this.listarUsuario()
-    });
-    
+    if (id !== null && confirm("Tem certeza que deseja remover?")) {
+      
+      this.usuarioService.deletarUsuario(id).subscribe(data =>{
+      
+        console.log(data)
+
+        this.listarUsuario()
+      });
+
+    }
+
   }
 
   // CONSULTA USUARIO POR NOME

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-vscode": {
+    "angular8-restfull": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/test-vscode",
+            "outputPath": "dist/angular8-restfull",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "test-vscode:build:production"
+              "browserTarget": "angular8-restfull:build:production"
             },
             "development": {
-              "browserTarget": "test-vscode:build:development"
+              "browserTarget": "angular8-restfull:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "test-vscode:build"
+            "browserTarget": "angular8-restfull:build"
           }
         },
         "test": {

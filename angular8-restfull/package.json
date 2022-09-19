@@ -1,5 +1,5 @@
 {
-  "name": "test-vscode",
+  "name": "angular8-restfull",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

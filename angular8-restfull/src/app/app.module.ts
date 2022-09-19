@@ -5,13 +5,14 @@ import { FormsModule } from '@angular/forms';// Ativando Forms do angular
 import { HttpClientModule } from '@angular/common/http';// Requisicoes Ajax
 import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';// Rotas do angular
-import {ModuleWithProviders} from '@angular/compiler/src/core';// Rotas do angular
+import {ModuleWithProviders} from '@angular/core';// Rotas do angular
 
 import { LoginComponent } from './login/login.component';
 import { HttpInterceptorModule } from './service/header-interceptor.service';
 import { UsuarioComponent } from './component/usuario/usuario.component';
 import { UsuarioAddComponent } from './component/usuario-add/usuario-add.component';
 import { GuardiaoGuard } from './service/guardiao.guard';
+import {NgxMaskModule, IConfig} from 'ngx-mask';
 
 
 // Rotas URLs
@@ -28,6 +29,7 @@ export const appRouters: Routes = [
 
 export const routes : ModuleWithProviders = RouterModule.forRoot(appRouters);
 
+export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ export const routes : ModuleWithProviders = RouterModule.forRoot(appRouters);
     FormsModule,
     HttpClientModule,
     routes,
-    HttpInterceptorModule
+    HttpInterceptorModule,
+    NgxMaskModule.forRoot(optionsMask)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ import { Telefone } from 'src/app/model/telefone';
 })
 export class UsuarioAddComponent implements OnInit {
 
-  usuario: Usuario;
+  usuario= new Usuario();
   telefone = new Telefone();
 
   constructor(private routeActive: ActivatedRoute, private usuarioService: UsuarioService) { }
@@ -76,7 +76,7 @@ export class UsuarioAddComponent implements OnInit {
 
 
   // DELETAR TELEFONE
-  deletarTelefone(idTelefone, i){
+  deletarTelefone(idTelefone: Number, i: number){
 
     if (idTelefone == null) {
       this.usuario.listaTelefone.splice(i, 1);

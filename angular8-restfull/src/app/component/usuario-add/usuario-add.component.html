@@ -32,7 +32,7 @@
     
     <div class="form-group mx-sm-3 mb-2">
       <label for="numero">Telefone</label>
-      <input type="text" [(ngModel)]="telefone.numero" id="numero" name="numero"  class="form-control" >
+      <input type="text" [(ngModel)]="telefone.numero" mask="(00) 0 0000-0000" id="numero" name="numero"  class="form-control" >
     </div>
 
     <button (click)="addTelefone()" type="button" class="btn btn-primary mb-2">adicionar</button>

@@ -1,5 +1,5 @@
 export class Telefone {
 
-	id: Number;
-	numero: String;
+	id!: Number;
+	numero!: String;
 }

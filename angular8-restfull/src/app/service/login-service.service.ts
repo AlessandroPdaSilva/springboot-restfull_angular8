@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConstants } from '../app-constants';
 import {Router} from '@angular/router';
+import { Usuario } from '../model/usuario';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class LoginServiceService {
   constructor(private http: HttpClient, private router: Router) { }
 
   // Fazer login
-  fazerLogin(usuario){
+  fazerLogin(usuario: any){
 
       localStorage.clear();
 

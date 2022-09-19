@@ -3,6 +3,8 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Observable } from 'rxjs';
 
+
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -10,8 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioComponent implements OnInit {
 
-  listaUsuario: Observable<Usuario[]>;
-  campoPesquisa: String;
+  listaUsuario:any;
+  campoPesquisa= new String;
 
   constructor(private usuarioService: UsuarioService){}
 
@@ -28,6 +30,7 @@ export class UsuarioComponent implements OnInit {
   listarUsuario(){
     this.usuarioService.listaUsuario().subscribe(data =>{
       this.listaUsuario = data;
+      console.info(data)
     });
   }
 

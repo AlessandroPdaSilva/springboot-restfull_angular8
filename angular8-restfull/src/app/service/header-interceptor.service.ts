@@ -1,7 +1,7 @@
 import { Injectable, NgModule } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ngModuleJitUrl } from '@angular/compiler';
+//import { ngModuleJitUrl } from '@angular/compiler';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -30,14 +30,14 @@ export class HeaderInterceptorService implements HttpInterceptor{
 
         (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse && (event.status === 200 || event.status === 201)) {
-            console.info('Sucesso na operação');
+            console.info('Sucesso na operaï¿½ï¿½o');
           }
         }
 
-      ),catchError(this.processaError));// Retorna para cabeçalho
+      ),catchError(this.processaError));// Retorna para cabeï¿½alho
 
     }else{
-      return next.handle(req).pipe(catchError(this.processaError));// Retorna para cabeçalho
+      return next.handle(req).pipe(catchError(this.processaError));// Retorna para cabeï¿½alho
     }
     
   }
@@ -52,7 +52,7 @@ export class HeaderInterceptorService implements HttpInterceptor{
       console.error(error.error);
       errorMessage = 'Error: ' + error.error.error;
     } else {
-      errorMessage = 'Código: ' + error.error.code + '\nMensagem: ' + error.error.error;
+      errorMessage = 'Cï¿½digo: ' + error.error.code + '\nMensagem: ' + error.error.error;
     }
 
     alert(errorMessage)

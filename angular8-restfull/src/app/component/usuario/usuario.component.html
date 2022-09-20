@@ -23,13 +23,17 @@
   </thead>
   <tbody>
 
-    <tr *ngFor="let u of listaUsuario ">
-	<th scope="row">{{u.id}}</th>
+    <tr *ngFor="let u of listaUsuario | paginate: { itemsPerPage:5, currentPage: pagina, totalItems: total} ">
+	    <th scope="row">{{u.id}}</th>
       <td>{{u.login}}</td>
       <td>{{u.nome}}</td>
       <td><button (click)='deletarUsuario(u.id)' type="button" class="btn btn-danger">Excluir</button></td>
       <td><button [routerLink]="['/usuarioAdd', u.id]" routerLinkActive="router-link-active" type="button" class="btn btn-primary">Editar</button></td>
     </tr>
+
+    <div class="text-center">
+      <pagination-controls (pageChange)="listarUsuarioPaginacao(pagina = $event);" previousLabel = "Voltar" nextLabel = "Avançar"></pagination-controls>
+    </div>
     
   </tbody>
 </table>

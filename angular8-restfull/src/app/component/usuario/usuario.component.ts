@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioComponent implements OnInit {
 
+  pagina: number = 1; 
+  total: number = 1;
   listaUsuario:any;
   campoPesquisa= new String;
 
@@ -28,11 +30,30 @@ export class UsuarioComponent implements OnInit {
 
   // LISTA USUARIO
   listarUsuario(){
-    this.usuarioService.listaUsuario().subscribe(data =>{
-      this.listaUsuario = data;
+    this.usuarioService.listaUsuarioPage(this.pagina - 1).subscribe(data =>{
+      
+      this.listaUsuario = data.content;
+      this.total = data.totalElements;
       console.info(data)
+
     });
   }
+
+  // LISTA USUARIO PAGINACAO
+  listarUsuarioPaginacao(pagina: number){
+
+    this.usuarioService.listaUsuarioPage(this.pagina - 1).subscribe(data =>{
+      
+      this.listaUsuario = data.content;
+      this.total = data.totalElements;
+      console.info(data)
+
+    });
+    console.info("Página : " + pagina);
+ }
+
+
+
 
   // DELETAR USUARIO
   deletarUsuario(id: Number){
@@ -58,6 +79,8 @@ export class UsuarioComponent implements OnInit {
 
     });
   }
+
+  
 
 
 }

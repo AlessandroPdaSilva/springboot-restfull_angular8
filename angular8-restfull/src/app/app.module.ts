@@ -12,7 +12,9 @@ import { HttpInterceptorModule } from './service/header-interceptor.service';
 import { UsuarioComponent } from './component/usuario/usuario.component';
 import { UsuarioAddComponent } from './component/usuario-add/usuario-add.component';
 import { GuardiaoGuard } from './service/guardiao.guard';
-import {NgxMaskModule, IConfig} from 'ngx-mask';
+import {NgxMaskModule, IConfig} from 'ngx-mask';// Mascara de input
+import { NgxPaginationModule } from 'ngx-pagination';// Paginação
+
 
 
 // Rotas URLs
@@ -45,7 +47,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     HttpClientModule,
     routes,
     HttpInterceptorModule,
-    NgxMaskModule.forRoot(optionsMask)
+    NgxMaskModule.forRoot(optionsMask),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

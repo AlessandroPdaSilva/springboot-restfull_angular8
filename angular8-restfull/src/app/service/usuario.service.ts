@@ -16,6 +16,11 @@ export class UsuarioService {
     return this.http.get<any>(AppConstants.urlUsuario)
   }
 
+  // LISTA USUARIOS PAGINACAO
+  listaUsuarioPage(pagina: number): Observable<any> {
+    return this.http.get<any>(AppConstants.urlUsuario + 'page/'+ pagina)
+  }
+
   // DELETAR USUARIO
   deletarUsuario(id: Number): Observable<any> {
     return this.http.delete(AppConstants.urlUsuario + id, {responseType: 'text'})

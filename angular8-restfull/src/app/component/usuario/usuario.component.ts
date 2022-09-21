@@ -73,11 +73,20 @@ export class UsuarioComponent implements OnInit {
 
   // CONSULTA USUARIO POR NOME
   consultaUsuarioByNome(){
-    this.usuarioService.consultaUsuarioByNome(this.campoPesquisa).subscribe(data =>{
 
-      this.listaUsuario = data;
+    if(this.campoPesquisa == ''){
+      this.listarUsuario()
+    }else{
 
-    });
+      this.usuarioService.consultaUsuarioByNome(this.campoPesquisa).subscribe(data =>{
+
+        this.listaUsuario = data;
+  
+      });
+      
+    }
+
+    
   }
 
   

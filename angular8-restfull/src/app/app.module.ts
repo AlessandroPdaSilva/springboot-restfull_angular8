@@ -14,6 +14,7 @@ import { UsuarioAddComponent } from './component/usuario-add/usuario-add.compone
 import { GuardiaoGuard } from './service/guardiao.guard';
 import {NgxMaskModule, IConfig} from 'ngx-mask';// Mascara de input
 import { NgxPaginationModule } from 'ngx-pagination';// Paginação
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -48,7 +49,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     routes,
     HttpInterceptorModule,
     NgxMaskModule.forRoot(optionsMask),
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

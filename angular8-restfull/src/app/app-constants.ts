@@ -9,4 +9,7 @@ export class AppConstants {
 	// URL Usuario
 	public static get urlUsuario(): string {return this.urlBase + "usuario/"}
 
+	// URL Profissao
+	public static get urlProfissao(): string {return this.urlBase + "profissao/"}
+
 }

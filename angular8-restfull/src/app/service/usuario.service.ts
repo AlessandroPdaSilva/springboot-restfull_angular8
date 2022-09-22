@@ -61,4 +61,9 @@ export class UsuarioService {
     return this.http.delete(AppConstants.urlUsuario + "telefone/" + id, {responseType: 'text'});
   }
 
+  // LISTA PROFISSAO
+  listarProfissao(): Observable<any> {
+    return this.http.get<any>(AppConstants.urlProfissao)
+  }
+
 }

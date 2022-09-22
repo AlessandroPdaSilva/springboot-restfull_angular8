@@ -1,3 +1,4 @@
+import { Profissao } from './profissao';
 import { Telefone } from './telefone';
 
 export class Usuario {
@@ -7,6 +8,8 @@ export class Usuario {
 	nome!: String;
 	senha!: String;
 	dataNascimento!: String;
+
+	profissao!: Profissao;
 
 	listaTelefone!: Array<Telefone>;
 }

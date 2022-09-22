@@ -4,66 +4,67 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Telefone } from 'src/app/model/telefone';
 import { NgbDateParserFormatter, NgbDateStruct, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { Profissao } from 'src/app/model/profissao';
 
 
 
-//  Formatador de data
-@Injectable()
-export class FormatDateAdapter extends NgbDateAdapter<string> {
+          //  Formatador de data
+          @Injectable()
+          export class FormatDateAdapter extends NgbDateAdapter<string> {
 
-  readonly DELIMITER = '/';
+            readonly DELIMITER = '/';
 
-  fromModel(value: string | null): NgbDateStruct | null {
-    if (value) {
-      let date = value.split(this.DELIMITER);
-      return {
-        day: parseInt(date[0], 10),
-        month: parseInt(date[1], 10),
-        year: parseInt(date[2], 10)
-      };
-    }
-    return null;
-  }
-
-
-  toModel(date: NgbDateStruct | null): string | null {
-    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
-  }
+            fromModel(value: string | null): NgbDateStruct | null {
+              if (value) {
+                let date = value.split(this.DELIMITER);
+                return {
+                  day: parseInt(date[0], 10),
+                  month: parseInt(date[1], 10),
+                  year: parseInt(date[2], 10)
+                };
+              }
+              return null;
+            }
 
 
-}
-
-//  Formatador de data
-@Injectable()
-export class FormataData extends NgbDateParserFormatter {
-
-  readonly DELIMITER = '/'; // 18/10/1987
+            toModel(date: NgbDateStruct | null): string | null {
+              return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+            }
 
 
+          }
 
-  parse(value: string): NgbDateStruct | null {
+          //  Formatador de data
+          @Injectable()
+          export class FormataData extends NgbDateParserFormatter {
 
-    if (value) {
-      let date = value.split(this.DELIMITER);
-      return {
-        day: parseInt(date[0], 10),
-        month: parseInt(date[1], 10),
-        year: parseInt(date[2], 10)
-      };
-    }
-    return null;
-  }
+            readonly DELIMITER = '/'; // 18/10/1987
 
-  format(date: NgbDateStruct): string {
 
-    return date ? validarDia(date.day) + this.DELIMITER + validarDia(date.month) + this.DELIMITER + date.year : '';
-  }
 
-  toModel(date: NgbDateStruct | null): string | null {
-    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
-  }
+            parse(value: string): NgbDateStruct | null {
 
-}
+              if (value) {
+                let date = value.split(this.DELIMITER);
+                return {
+                  day: parseInt(date[0], 10),
+                  month: parseInt(date[1], 10),
+                  year: parseInt(date[2], 10)
+                };
+              }
+              return null;
+            }
+
+            format(date: NgbDateStruct): string {
+
+              return date ? validarDia(date.day) + this.DELIMITER + validarDia(date.month) + this.DELIMITER + date.year : '';
+            }
+
+            toModel(date: NgbDateStruct | null): string | null {
+              return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+            }
+
+          }
 
         // Formatador de data
         function validarDia(valor:number) {
@@ -89,6 +90,7 @@ export class UsuarioAddComponent implements OnInit {
 
   usuario= new Usuario();
   telefone = new Telefone();
+  listaProfissao = new Array<Profissao>();
 
   constructor(private routeActive: ActivatedRoute, private usuarioService: UsuarioService) { }
   
@@ -103,12 +105,19 @@ export class UsuarioAddComponent implements OnInit {
       // Carrega usuario
       this.usuarioService.consultaUsuarioById(parseInt(id)).subscribe(data=>{
         this.usuario = data;
+        console.log(data)
       })
       
       console.log(id)
     }else{
       this.novoUsuario()
     }
+
+    // Carrega Lista de Profissao
+    this.usuarioService.listarProfissao().subscribe(data=>{
+      this.listaProfissao = data;
+      console.log(data)
+    })
 
   }
 

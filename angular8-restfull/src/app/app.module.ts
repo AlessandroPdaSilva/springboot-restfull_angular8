@@ -30,7 +30,7 @@ export const appRouters: Routes = [
 ];
 
 
-export const routes : ModuleWithProviders = RouterModule.forRoot(appRouters);
+export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters);
 
 export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
 

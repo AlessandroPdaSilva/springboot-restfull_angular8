@@ -7,7 +7,7 @@ import { NgbDateParserFormatter, NgbDateStruct, NgbDateAdapter } from '@ng-boots
 
 
 
-// Formatador de data
+//  Formatador de data
 @Injectable()
 export class FormatDateAdapter extends NgbDateAdapter<string> {
 
@@ -33,7 +33,7 @@ export class FormatDateAdapter extends NgbDateAdapter<string> {
 
 }
 
-// Formatador de data
+//  Formatador de data
 @Injectable()
 export class FormataData extends NgbDateParserFormatter {
 
@@ -65,14 +65,14 @@ export class FormataData extends NgbDateParserFormatter {
 
 }
 
-// Formatador de data
-function validarDia(valor:number) {
-  if (valor != null && valor <= 9) {
-    return '0' + valor;
-  } else {
-    return valor;
-  }
-}
+        // Formatador de data
+        function validarDia(valor:number) {
+          if (valor != null && valor <= 9) {
+            return '0' + valor;
+          } else {
+            return valor;
+          }
+        }
 
 
 
@@ -81,7 +81,9 @@ function validarDia(valor:number) {
 @Component({
   selector: 'app-usuario-add',
   templateUrl: './usuario-add.component.html',
-  styleUrls: ['./usuario-add.component.css']
+  styleUrls: ['./usuario-add.component.css'],
+  providers: [{provide: NgbDateParserFormatter, useClass:FormataData},
+              {provide:NgbDateAdapter, useClass:FormatDateAdapter}]
 })
 export class UsuarioAddComponent implements OnInit {
 
@@ -114,7 +116,6 @@ export class UsuarioAddComponent implements OnInit {
   salvarUsuario(){
 
     if(this.usuario.id == null){// salvar
-
       this.usuarioService.salvarUsuario(this.usuario).subscribe(data=>{
         this.novoUsuario()
         console.info('Salvo com sucesso: '+data)

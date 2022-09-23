@@ -16,21 +16,48 @@
     <input [(ngModel)]="usuario.nome" id="nome" name="nome" #nomeValidate="ngModel" type="text" required="true" class="form-control" >
   </div>
 
-  <div class="form-group col-md-3">
-    
-    <label for="dataNascimento">Data de Nascimento</label>
-    
-     <div class="input-group">
 
-         <input name="dataNascimento" id="dataNascimento" type="text" class="form-control" placeholder="dd/mm/yyyy"
-           ngbDatepicker #dataNascimento="ngbDatepicker" [(ngModel)] = "usuario.dataNascimento">
 
-         <div class="input-group-append">
-            <button class="btn btn-primary" (click)="dataNascimento.toggle()" type="button"></button>
-         </div>
 
-     </div>
-   </div> 
+  <div class="form-row align-items-center"> 
+      <div class="form-group col-md-3">
+        
+        <label for="dataNascimento">Data de Nascimento</label>
+        
+        <div class="input-group">
+          <span style="color:red; font-size: 23px;" *ngIf="dataNascimentoValidate.invalid"> * </span>
+            <input name="dataNascimento" id="dataNascimento" type="text" class="form-control" placeholder="dd/mm/yyyy"
+              ngbDatepicker #dataNascimento="ngbDatepicker" [(ngModel)] = "usuario.dataNascimento" #dataNascimentoValidate="ngModel">
+
+            <div class="input-group-append">
+                <button class="btn btn-primary" (click)="dataNascimento.toggle()" type="button"></button>
+            </div>
+
+        </div>
+        
+      </div> 
+
+      <div class="form-group col-md-3">
+        
+        <label for="profissao">Profissao</label>
+
+        <div class="input-group">
+
+            
+            <select [(ngModel)]="usuario.profissao" id="profissao" name="profissao" 
+            #profissaoValidate="ngModel" type="text" class="form-control" >
+              
+              <option *ngFor="let p of listaProfissao" [ngValue]="p" > {{p.descricao}}</option>
+            </select>
+          
+
+        </div>
+        
+      </div> 
+  
+    </div>
+   
+
 
 
   <div class="form-group">

@@ -14,7 +14,7 @@ export class LoginServiceService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  // Fazer login
+  // FAZER LOGIN
   fazerLogin(usuario: any){
 
       localStorage.clear();
@@ -39,5 +39,25 @@ export class LoginServiceService {
 
 
   }
+
+  // RECUPERAR CONTA (esqueci senha)
+  recuperarConta(login: any){
+
+    let usuario = new Usuario();
+
+    usuario.login = login;
+
+    return this.http.post(AppConstants.urlRecuperaConta, usuario)
+    .subscribe( data => {
+
+        alert(JSON.parse(JSON.stringify(data)).error)
+
+    }, error => {// Erro
+
+      alert("Erro ao recuperar login")
+    })
+
+
+}
 
 }

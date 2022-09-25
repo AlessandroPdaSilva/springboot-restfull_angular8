@@ -12,4 +12,7 @@ export class AppConstants {
 	// URL Profissao
 	public static get urlProfissao(): string {return this.urlBase + "profissao/"}
 
+	// URL Recuperar Conta
+	public static get urlRecuperaConta(): string {return this.urlBase + "recuperaconta/"}
+
 }

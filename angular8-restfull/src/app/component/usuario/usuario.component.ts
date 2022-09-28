@@ -89,6 +89,11 @@ export class UsuarioComponent implements OnInit {
     
   }
 
+  // IMPRIME RELATORIO
+  imprimeRelatorio(){
+    return this.usuarioService.downloadPdfRelatorio();
+  }
+
   
 
 

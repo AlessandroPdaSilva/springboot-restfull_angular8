@@ -15,4 +15,7 @@ export class AppConstants {
 	// URL Recuperar Conta
 	public static get urlRecuperaConta(): string {return this.urlBase + "recuperaconta/"}
 
+	// URL Relatorio
+	public static get urlRelatorio(): string {return this.urlBase + "relatorio/"}
+
 }

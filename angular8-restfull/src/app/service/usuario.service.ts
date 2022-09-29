@@ -69,7 +69,7 @@ export class UsuarioService {
   downloadPdfRelatorio(){
     return this.http.get(AppConstants.urlRelatorio, {responseType: 'text'}).subscribe(data => {
       //document.querySelector('iframe').src = data;
-      
+      window.open(data)
     })
   }
 

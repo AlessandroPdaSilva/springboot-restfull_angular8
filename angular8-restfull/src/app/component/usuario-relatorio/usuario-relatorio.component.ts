@@ -27,7 +27,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 
 
             toModel(date: NgbDateStruct | null): string | null {
-              return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+              return date ? validarDia(date.day) + this.DELIMITER + validarDia(date.month) + this.DELIMITER + date.year : null;
             }
 
 

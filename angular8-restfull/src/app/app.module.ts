@@ -15,6 +15,7 @@ import { GuardiaoGuard } from './service/guardiao.guard';
 import {NgxMaskModule, IConfig} from 'ngx-mask';// Mascara de input
 import { NgxPaginationModule } from 'ngx-pagination';// Paginação
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { UsuarioRelatorioComponent } from './component/usuario-relatorio/usuario-relatorio.component';
 
 
 
@@ -26,7 +27,8 @@ export const appRouters: Routes = [
   {path: '', component: LoginComponent },
   {path: 'usuarioList', component: UsuarioComponent, canActivate:[GuardiaoGuard] },
   {path: 'usuarioAdd', component: UsuarioAddComponent, canActivate:[GuardiaoGuard] },
-  {path: 'usuarioAdd/:id', component: UsuarioAddComponent,  canActivate:[GuardiaoGuard] }
+  {path: 'usuarioAdd/:id', component: UsuarioAddComponent,  canActivate:[GuardiaoGuard] },
+  {path: 'usuarioRelatorio', component: UsuarioRelatorioComponent,  canActivate:[GuardiaoGuard] }
 ];
 
 
@@ -40,7 +42,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     HomeComponent,
     LoginComponent,
     UsuarioComponent,
-    UsuarioAddComponent
+    UsuarioAddComponent,
+    UsuarioRelatorioComponent
   ],
   imports: [// imports
     BrowserModule,

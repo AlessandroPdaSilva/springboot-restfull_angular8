@@ -1,0 +1,48 @@
+
+
+<form style="padding: 3%;" #formValidate="ngForm" >
+
+  <h2>Tela de Usuario</h2>
+  <br>
+
+  <div class="form-row align-items-center"> 
+      <div class="form-group col-md-3">
+        
+        <label for="dataNascimento">Data Inicial</label>
+        
+        <div class="input-group">
+          <span style="color:red; font-size: 23px;" *ngIf="dataInicialValidate.invalid"> * </span>
+            <input name="dataInicial" id="dataInicial" type="text" class="form-control" placeholder="dd/mm/yyyy"
+              ngbDatepicker #dataInicial="ngbDatepicker" [(ngModel)] = "usuarioRelatorio.dataInicial" #dataInicialValidate="ngModel">
+
+            <div class="input-group-append">
+                <button class="btn btn-primary" (click)="dataInicial.toggle()" type="button"></button>
+            </div>
+
+        </div>
+
+        <br>
+
+        <label for="dataNascimento">Data Final</label>
+        
+        <div class="input-group">
+          <span style="color:red; font-size: 23px;" *ngIf="dataFinalValidate.invalid"> * </span>
+            <input name="dataFinal" id="dataFinal" type="text" class="form-control" placeholder="dd/mm/yyyy"
+              ngbDatepicker #dataFinal="ngbDatepicker" [(ngModel)] = "usuarioRelatorio.dataFinal" #dataFinalValidate="ngModel">
+
+            <div class="input-group-append">
+                <button class="btn btn-primary" (click)="dataFinal.toggle()" type="button"></button>
+            </div>
+
+        </div>
+        
+      </div> 
+
+      
+  
+    </div>
+   
+  <button (click)="imprimeRelatorio()" type="button" class="btn btn-primary" style="margin-left: 5px;">Gerar PDF</button>
+  <button [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" type="button" class="btn btn-primary" style="margin-left: 5px;">Voltar para usuarios</button>
+
+</form>
